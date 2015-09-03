@@ -11,7 +11,7 @@ if app.body !~ /Imba.defineTag = /
   fail "application.js does not include Imba runtime"
 end
 
-if app.body !~ /hellosupertag/
+if app.body !~ /Hello Imba!/
   fail "application.js does not include our Imba code"
 end
 

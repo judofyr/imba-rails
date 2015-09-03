@@ -1,4 +1,12 @@
-tag hellosupertag
-  def yay
-    1 + 2
+tag #app
+    def awaken
+        render
+        self
+
+    def render
+        <self>
+            <h1> "Hello Imba!"
+
+def app
+    #app
 

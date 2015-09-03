@@ -1,8 +1,41 @@
 # Imba::Rails
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/imba/rails`. To experiment with that code, run `bin/console` for an interactive prompt.
+Rails integration for the [Imba](https://github.com/somebee/imba) language.
 
-TODO: Delete this and the text above, and describe your gem
+## Usage
+
+Write `.imba` files:
+
+```imba
+# in app/assets/javascripts/todo.imba
+tag #app
+    def awaken
+        render
+        self
+
+    def render
+        <self>
+            <h1> "Hello Imba!"
+
+def app
+    #app
+```
+
+Include them together with the Imba runtime in application.js:
+
+```javascript
+//= require imba
+//= require todo
+```
+
+Make it all happen in the view:
+
+```erb
+<%= javascript_include_tag 'application' %>
+...
+<div id="app"></div>
+<script>app()</script>
+```
 
 ## Installation
 
@@ -20,20 +53,9 @@ Or install it yourself as:
 
     $ gem install imba-rails
 
-## Usage
-
-TODO: Write usage instructions here
-
-## Development
-
-After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake false` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
-
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
-
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/imba-rails.
-
+Bug reports and pull requests are welcome on GitHub at https://github.com/judofyr/imba-rails.
 
 ## License
 

@@ -9,4 +9,5 @@
 /tmp/
 
 /example_app/tmp
+/example_app/log
 /example_app/Gemfile.lock
