@@ -1,0 +1,10 @@
+language: ruby
+rvm:
+  - 2.2
+  - 2.1
+  - 2.0
+  - jruby
+before_install:
+  - gem install bundler -v 1.10.5
+  - cd example_app
+script: ./test.sh
