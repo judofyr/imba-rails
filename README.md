@@ -43,6 +43,9 @@ Add this line to your application's Gemfile:
 
 ```ruby
 gem 'imba-rails'
+
+# You should also depend on a specific version of Imba:
+gem 'imab-source', '~> 0.12.1'
 ```
 
 And then execute:
