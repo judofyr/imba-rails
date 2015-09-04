@@ -17,7 +17,7 @@ tag #app
         <self>
             <h1> "Hello Imba!"
 
-def app
+def window.app
     #app
 ```
 

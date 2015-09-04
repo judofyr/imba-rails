@@ -30,7 +30,8 @@ module ExampleApp
     # config.i18n.default_locale = :de
 
     config.imba.compiler_options = {
-      bare: true
+      # bare: true,
+      sourceMapInline: true,
     }
   end
 end
