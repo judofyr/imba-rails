@@ -15,6 +15,11 @@ if app.body !~ /Hello Imba!/
   fail "application.js does not include our Imba code"
 end
 
+app.get("/assets/welcome.js")
+if app.status != 200
+  fail "users.js returned #{app.status}"
+end
+
 puts "ok"
 '
 
