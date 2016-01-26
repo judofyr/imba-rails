@@ -25,13 +25,29 @@ module Imba
       # TODO: not make this global?
       config.imba = ImbaOptions.new
 
+      def configure_assets(app)
+        if config.respond_to?(:assets) && config.assets.respond_to?(:configure)
+          # Rails 4.x
+          config.assets.configure do |env|
+            yield env
+          end
+        else
+          # Rails 3.2
+          yield app.assets
+        end
+      end
+
       initializer 'imba.asset_paths', :after => 'sprockets.environment', :group => :all do |app|
-        app.assets.append_path Imba::Source::BROWSER_PATH.to_s
+        configure_assets app do |env|
+          env.append_path Imba::Source::BROWSER_PATH.to_s
+        end
       end
 
       initializer 'imba.compiler' do |app|
-        app.assets.register_mime_type 'text/imba', extensions: ['.imba'], charset: :unicode
-        app.assets.register_transformer 'text/imba', 'application/javascript', Transformer.new(app.config.imba.compiler_options)
+        configure_assets app do |env|
+          env.register_mime_type 'text/imba', extensions: ['.imba'], charset: :unicode
+          env.register_transformer 'text/imba', 'application/javascript', Transformer.new(app.config.imba.compiler_options)
+        end
       end
     end
   end
